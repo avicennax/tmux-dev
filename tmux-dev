@@ -1,0 +1,17 @@
+#!/bin/bash
+# basic tmux session
+
+if [[ $# -gt 0 ]]; then
+    session_name=$1
+else
+    if tmux info &> /dev/null; then
+        session_name=$(tmux ls | wc -l)
+    else
+        session_name="0"
+    fi
+fi
+
+tmux new-session -s $session_name -d
+tmux split-window -h
+tmux split-window -v
+tmux -2 attach-session -d

@@ -14,4 +14,4 @@ fi
 tmux new-session -s $session_name -d
 tmux split-window -h
 tmux split-window -v
-tmux -2 attach-session -d
+tmux attach-session -d -t $session_name
